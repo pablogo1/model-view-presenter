@@ -55,16 +55,29 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="MasterDetailWithEvents\ContactsForm.cs">
+    <Compile Include="MainModule.cs" />
+    <Compile Include="MasterDetailWithEvents\MasterDetailWithEventsModule.cs" />
+    <Compile Include="MasterDetailWithEvents\Presenter\ContactsPresenter.cs" />
+    <Compile Include="MasterDetailWithEvents\View\ContactsViewEventArgs.cs" />
+    <Compile Include="MasterDetailWithEvents\Model\Contact.cs" />
+    <Compile Include="MasterDetailWithEvents\View\ContactsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MasterDetailWithEvents\ContactsForm.Designer.cs">
+    <Compile Include="MasterDetailWithEvents\View\ContactsForm.Designer.cs">
       <DependentUpon>ContactsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MasterDetailWithEvents\IContactsView.cs" />
+    <Compile Include="MasterDetailWithEvents\View\IContactsView.cs" />
+    <Compile Include="MasterDetailWithEvents\Model\ContactMemoryRepository.cs" />
+    <Compile Include="MasterDetailWithEvents\Model\IContactRepository.cs" />
+    <Compile Include="MasterDetailWithEvents\Presenter\IContactsPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MasterDetailWithEvents\ContactsForm.resx">
+    <Compile Include="Shared\IAlertService.cs" />
+    <Compile Include="Shared\IMasterDetailPresenter.cs" />
+    <Compile Include="Shared\IPresenter.cs" />
+    <Compile Include="Shared\IRepository.cs" />
+    <Compile Include="Shared\MessageBoxAlertService.cs" />
+    <EmbeddedResource Include="MasterDetailWithEvents\View\ContactsForm.resx">
       <DependentUpon>ContactsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

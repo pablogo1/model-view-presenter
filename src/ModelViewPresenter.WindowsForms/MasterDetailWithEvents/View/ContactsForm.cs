@@ -18,6 +18,12 @@ namespace ModelViewPresenter.WindowsForms.MasterDetailWithEvents.View
             InitializeComponent();
         }
 
+        public ContactsForm(Presenter.IContactsPresenter presenter) : this()
+        {
+            this.presenter = presenter;
+            this.presenter.SetView(this);
+        }
+
         public IList<Contact> Contacts
         {
             set
@@ -29,6 +35,8 @@ namespace ModelViewPresenter.WindowsForms.MasterDetailWithEvents.View
         }
 
         private int? selectedContactId;
+        private readonly Presenter.IContactsPresenter presenter;
+
         public int? ContactId
         {
             get => selectedContactId;
@@ -79,6 +87,12 @@ namespace ModelViewPresenter.WindowsForms.MasterDetailWithEvents.View
         {
             var eventArgs = ContactsViewEventArgs.Empty;
             RemoveContactClicked?.Invoke(this, eventArgs);
+        }
+
+        private void ContactsForm_Load(object sender, EventArgs e)
+        {
+            OnViewLoaded();
+            //presenter.LoadView();
         }
     }
 }
