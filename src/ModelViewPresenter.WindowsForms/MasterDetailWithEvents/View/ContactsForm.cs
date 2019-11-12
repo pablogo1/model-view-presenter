@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ModelViewPresenter.WindowsForms.MasterDetailWithEvents.Model;
 
@@ -46,6 +40,7 @@ namespace ModelViewPresenter.WindowsForms.MasterDetailWithEvents.View
                 idLabel.Text = $"Id: {selectedContactId?.ToString() ?? string.Empty}";
             }
         }
+
         public string FirstName { get => firstNameTextBox.Text; set => firstNameTextBox.Text = value; }
         public string LastName { get => lastNameTextBox.Text; set => lastNameTextBox.Text = value; }
         public string Phone { get => phoneTextBox.Text; set => phoneTextBox.Text = value; }
@@ -89,10 +84,35 @@ namespace ModelViewPresenter.WindowsForms.MasterDetailWithEvents.View
             RemoveContactClicked?.Invoke(this, eventArgs);
         }
 
+        protected virtual void OnNewContactClicked()
+        {
+            var eventArgs = ContactsViewEventArgs.Empty;
+            NewContactClicked?.Invoke(this, eventArgs);
+        }
+
         private void ContactsForm_Load(object sender, EventArgs e)
         {
             OnViewLoaded();
-            //presenter.LoadView();
+        }
+
+        private void ContactsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            OnSelectedContactChanged();
+        }
+
+        private void RemoveButton_Click(object sender, EventArgs e)
+        {
+            OnRemoveContactClicked();
+        }
+
+        private void NewButton_Click(object sender, EventArgs e)
+        {
+            OnNewContactClicked();
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            OnSaveContactClicked();
         }
     }
 }

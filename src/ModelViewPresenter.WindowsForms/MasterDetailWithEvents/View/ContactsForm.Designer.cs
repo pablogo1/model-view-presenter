@@ -103,6 +103,7 @@
             this.newButton.TabIndex = 0;
             this.newButton.Text = "&New";
             this.newButton.UseVisualStyleBackColor = true;
+            this.newButton.Click += new System.EventHandler(this.NewButton_Click);
             // 
             // removeButton
             // 
@@ -112,6 +113,7 @@
             this.removeButton.TabIndex = 1;
             this.removeButton.Text = "&Remove";
             this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
             // contactsListBox
             // 
@@ -121,6 +123,7 @@
             this.contactsListBox.Name = "contactsListBox";
             this.contactsListBox.Size = new System.Drawing.Size(262, 234);
             this.contactsListBox.TabIndex = 1;
+            this.contactsListBox.SelectedIndexChanged += new System.EventHandler(this.ContactsListBox_SelectedIndexChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -214,6 +217,7 @@
             this.saveButton.TabIndex = 6;
             this.saveButton.Text = "&Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // idLabel
             // 

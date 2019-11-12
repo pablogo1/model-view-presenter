@@ -56,7 +56,6 @@ namespace ModelViewPresenter.WindowsForms.MasterDetailWithEvents.Presenter
         }
 
         private void View_SaveContactClicked(object sender, ContactsViewEventArgs e)
-        //public void SaveContact()
         {
             try
             {
@@ -84,7 +83,6 @@ namespace ModelViewPresenter.WindowsForms.MasterDetailWithEvents.Presenter
         }
 
         private void View_RemoveContactClicked(object sender, ContactsViewEventArgs e)
-        //public void RemoveContact()
         {
             try
             {
@@ -105,14 +103,12 @@ namespace ModelViewPresenter.WindowsForms.MasterDetailWithEvents.Presenter
         }
 
         private void View_NewContactClicked(object sender, ContactsViewEventArgs e)
-        //public void NewContact()
         {
             SelectedContact = new Contact();
             DisplayDetail();
         }
 
         private void View_SelectedContactChanged(object sender, ContactsViewEventArgs e)
-        //public void ChangeSelectedContact(Contact selectedContact)
         {
             SelectedContact = e.SelectedContact;
             DisplayDetail();

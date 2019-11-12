@@ -7,7 +7,7 @@ namespace ModelViewPresenter.WindowsForms.MasterDetailWithEvents.Model
     {
         private static readonly ISet<Contact> contacts = new HashSet<Contact>()
         {
-            new Contact { Id = 1, FirstName = "Joe", LastName = "Doe", Phone = "(222) 111-1111" }
+            new Contact { Id = 1, FirstName = "Joe", LastName = "Doe", Phone = "(222)111-1111" }
         };
 
         public void Add(Contact model)
