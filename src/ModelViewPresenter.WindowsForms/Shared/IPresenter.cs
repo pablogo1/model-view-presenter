@@ -1,8 +1,7 @@
 ﻿namespace ModelViewPresenter.WindowsForms.Shared
 {
-    public interface IPresenter<in TView>
+    public interface IPresenter<in TView> where TView : class
     {
-        void Display();
         void SetView(TView view);
     }
 }

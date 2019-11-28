@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 
 namespace ModelViewPresenter.WindowsForms.MasterDetailWithEvents.Presenter
 {
-    public class ContactsPresenter : IContactsPresenter
+    public class ContactsPresenter : MasterDetailPresenter<IContactsView>, IContactsPresenter
     {
         private readonly IContactRepository contactRepository;
         private readonly IAlertService alertService;
-        private IContactsView view;
 
         public ContactsPresenter(IContactRepository contactRepository, IAlertService alertService)
         {
@@ -19,41 +18,30 @@ namespace ModelViewPresenter.WindowsForms.MasterDetailWithEvents.Presenter
             this.alertService = alertService ?? throw new ArgumentNullException(nameof(alertService));
         }
 
-        public void Display()
+        protected override void Display()
         {
             var records = contactRepository.GetAll();
-            view.Contacts = records.ToList();
+            View.Contacts = records.ToList();
         }
 
-        public void DisplayDetail()
+        protected override void DisplayDetail()
         {
-            view.ContactId = SelectedContact?.Id;
-            view.FirstName = SelectedContact?.FirstName ?? string.Empty;
-            view.LastName = SelectedContact?.LastName ?? string.Empty;
-            view.Phone = SelectedContact?.Phone ?? string.Empty;
+            View.ContactId = SelectedContact?.Id;
+            View.FirstName = SelectedContact?.FirstName ?? string.Empty;
+            View.LastName = SelectedContact?.LastName ?? string.Empty;
+            View.Phone = SelectedContact?.Phone ?? string.Empty;
         }
 
-        public void SetView(IContactsView view)
+        protected override void SetupView()
         {
-            this.view = view ?? throw new ArgumentNullException(nameof(view));
-            SetupView();
+            View.ViewLoaded += View_ViewLoaded;
+            View.SelectedContactChanged += View_SelectedContactChanged;
+            View.NewContactClicked += View_NewContactClicked;
+            View.RemoveContactClicked += View_RemoveContactClicked;
+            View.SaveContactClicked += View_SaveContactClicked;
         }
-
+        
         protected virtual Contact SelectedContact { get; set; }
-
-        private void SetupView()
-        {
-            view.ViewLoaded += View_ViewLoaded;
-            view.SelectedContactChanged += View_SelectedContactChanged;
-            view.NewContactClicked += View_NewContactClicked;
-            view.RemoveContactClicked += View_RemoveContactClicked;
-            view.SaveContactClicked += View_SaveContactClicked;
-        }
-
-        public async Task LoadView()
-        {
-            await Task.Run(() => this.Display());
-        }
 
         private void View_SaveContactClicked(object sender, ContactsViewEventArgs e)
         {
@@ -65,9 +53,9 @@ namespace ModelViewPresenter.WindowsForms.MasterDetailWithEvents.Presenter
                     contactRepository.Add(SelectedContact);
                 }
 
-                SelectedContact.FirstName = view.FirstName;
-                SelectedContact.LastName = view.LastName;
-                SelectedContact.Phone = view.Phone;
+                SelectedContact.FirstName = View.FirstName;
+                SelectedContact.LastName = View.LastName;
+                SelectedContact.Phone = View.Phone;
 
                 SelectedContact = null;
             }

@@ -1,7 +1,7 @@
 ﻿namespace ModelViewPresenter.WindowsForms.Shared
 {
-    public interface IMasterDetailPresenter<in TView> : IPresenter<TView>
+    public interface IMasterDetailPresenter<TView> : IPresenter<TView>
+        where TView : class
     {
-        void DisplayDetail();
     }
 }

@@ -74,6 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\IAlertService.cs" />
     <Compile Include="Shared\IMasterDetailPresenter.cs" />
+    <Compile Include="Shared\MasterDetailPresenter.cs" />
     <Compile Include="Shared\IPresenter.cs" />
     <Compile Include="Shared\IRepository.cs" />
     <Compile Include="Shared\MessageBoxAlertService.cs" />
