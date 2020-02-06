@@ -27,9 +27,7 @@ namespace ModelViewPresenter.WindowsForms
 
             using (var scope = Container.BeginLifetimeScope())
             {
-                var presenter = Container.Resolve<MasterDetailWithEvents.Presenter.IContactsPresenter>();
-                //var mainForm = Container.ResolveNamed<Form>("MasterDetailWithEvents");
-                var mainForm = Container.Resolve<MasterDetailWithEvents.View.IContactsView>() as Form;
+                var mainForm = Container.Resolve<MasterDetailWithDirectMethodCalls.View.IContactsView>() as Form;
 
                 Application.Run(mainForm);
             }
@@ -41,7 +39,8 @@ namespace ModelViewPresenter.WindowsForms
             var builder = new ContainerBuilder();
 
             builder.RegisterModule<MainModule>();
-            builder.RegisterModule<MasterDetailWithEvents.MasterDetailWithEventsModule>();
+            //builder.RegisterModule<MasterDetailWithEvents.MasterDetailWithEventsModule>();
+            builder.RegisterModule<MasterDetailWithDirectMethodCalls.MasterDetailWithDirectMethodCallsModule>();
 
             Container = builder.Build();
         }

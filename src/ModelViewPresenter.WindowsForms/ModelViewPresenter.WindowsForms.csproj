@@ -56,6 +56,20 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="MainModule.cs" />
+    <Compile Include="MasterDetailsWithDirectMethodCalls\MasterDetailWithDirectMethodCallsModule.cs" />
+    <Compile Include="MasterDetailsWithDirectMethodCalls\Model\Contact.cs" />
+    <Compile Include="MasterDetailsWithDirectMethodCalls\Model\ContactMemoryRepository.cs" />
+    <Compile Include="MasterDetailsWithDirectMethodCalls\Model\IContactRepository.cs" />
+    <Compile Include="MasterDetailsWithDirectMethodCalls\Presenter\ContactsPresenter.cs" />
+    <Compile Include="MasterDetailsWithDirectMethodCalls\Presenter\IContactsPresenter.cs" />
+    <Compile Include="MasterDetailsWithDirectMethodCalls\View\ContactsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MasterDetailsWithDirectMethodCalls\View\ContactsForm.Designer.cs">
+      <DependentUpon>ContactsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MasterDetailsWithDirectMethodCalls\View\ContactsViewEventArgs.cs" />
+    <Compile Include="MasterDetailsWithDirectMethodCalls\View\IContactsView.cs" />
     <Compile Include="MasterDetailWithEvents\MasterDetailWithEventsModule.cs" />
     <Compile Include="MasterDetailWithEvents\Presenter\ContactsPresenter.cs" />
     <Compile Include="MasterDetailWithEvents\View\ContactsViewEventArgs.cs" />
@@ -78,6 +92,9 @@
     <Compile Include="Shared\IPresenter.cs" />
     <Compile Include="Shared\IRepository.cs" />
     <Compile Include="Shared\MessageBoxAlertService.cs" />
+    <EmbeddedResource Include="MasterDetailsWithDirectMethodCalls\View\ContactsForm.resx">
+      <DependentUpon>ContactsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MasterDetailWithEvents\View\ContactsForm.resx">
       <DependentUpon>ContactsForm.cs</DependentUpon>
     </EmbeddedResource>

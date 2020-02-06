@@ -13,6 +13,8 @@
 
         protected abstract void Display();
         protected abstract void DisplayDetail();
-        protected abstract void SetupView();
+        protected virtual void SetupView()
+        {
+        }
     }
 }
